@@ -1,0 +1,54 @@
+spine1#sho running-config
+! Command: show running-config
+! device: spine1 (vEOS-lab, EOS-4.29.2F)
+!
+! boot system flash:/vEOS-lab.swi
+!
+no aaa root
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model ribd
+!
+hostname spine1
+!
+spanning-tree mode mstp
+!
+interface Ethernet1
+   description leaf-1
+   no switchport
+   ip address 10.10.1.0/31
+!
+interface Ethernet2
+   description leaf-2
+   no switchport
+   ip address 10.10.1.2/31
+!
+interface Ethernet3
+   description leaf-3
+   no switchport
+   ip address 10.10.1.4/31
+!
+interface Ethernet4
+   shutdown
+!
+interface Ethernet5
+   shutdown
+!
+interface Ethernet6
+   shutdown
+!
+interface Ethernet7
+   shutdown
+!
+interface Ethernet8
+   shutdown
+!
+interface Loopback1
+   ip address 10.10.10.0/32
+!
+interface Management1
+!
+no ip routing
+!
+end
