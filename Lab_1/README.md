@@ -2,8 +2,7 @@
 Проектирование адресного пространства
 Схема CLOS
 
-![alt text](Схема.JPG)
-
+![alt text](image/Схема.JPG)
 
 Адресация сети
 
@@ -32,8 +31,122 @@
 |leaf-3  |	Loopback2 |	10.10.0.3/32 |	           |
 
 
-Проверка на доступнорсть
 
+### Конфигурация оборудования
+
+- #### [spine-1](Config/spine/spine-1.conf)
+
+```
+!
+hostname spine1
+!
+interface Ethernet1
+   description leaf-1
+   no switchport
+   ip address 10.10.1.0/31
+!
+interface Ethernet2
+   description leaf-2
+   no switchport
+   ip address 10.10.1.2/31
+!
+interface Ethernet3
+   description leaf-3
+   no switchport
+   ip address 10.10.1.4/31
+!
+interface Loopback1
+   ip address 10.10.10.0/32
+!
+```
+- #### [spine-2](Config/spine/spine-2.conf)
+
+```
+!
+hostname spine-2
+!
+interface Ethernet1
+   description leaf-1
+   no switchport
+   ip address 10.10.2.0/31
+!
+interface Ethernet2
+   description leaf-2
+   no switchport
+   ip address 10.10.2.2/31
+!
+interface Ethernet3
+   description leaf-3
+   no switchport
+   ip address 10.10.2.4/31
+!
+interface Loopback1
+   ip address 10.10.20.0/32
+!
+```
+- #### [leaf-1](Config/leaf/leaf-1.conf)
+```
+!
+hostname leaf-1
+!
+interface Ethernet1
+   description spine-1
+   no switchport
+   ip address 10.10.1.1/31
+!
+interface Ethernet2
+   description spine-2
+   no switchport
+   ip address 10.10.2.1/31
+!
+interface Loopback2
+   ip address 10.10.0.1/32
+!
+
+```
+- #### [leaf-2](Config/leaf/leaf-2.conf)
+```
+!
+hostname leaf-2
+!
+interface Ethernet1
+   description spine-1
+   no switchport
+   ip address 10.10.1.3/31
+!
+interface Ethernet2
+   description spine-2
+   no switchport
+   ip address 10.10.2.3/31
+!
+interface Loopback2
+   ip address 10.10.0.2/32
+!
+```
+- #### [leaf-3](Config/leaf/leaf-3.conf)
+```
+!
+hostname leaf-3
+!
+interface Ethernet1
+   description spine-1
+   no switchport
+   ip address 10.10.1.5/31
+!
+interface Ethernet2
+   description spine-2
+   no switchport
+   ip address 10.10.2.5/31
+!
+interface Loopback2
+   ip address 10.10.0.3/32
+!
+```
+
+### Проверка на доступность
+- #### spine-1
+
+```
 spine1#ping 10.10.1.1
 PING 10.10.1.1 (10.10.1.1) 72(100) bytes of data.
 80 bytes from 10.10.1.1: icmp_seq=1 ttl=64 time=4.03 ms
@@ -66,9 +179,10 @@ PING 10.10.1.5 (10.10.1.5) 72(100) bytes of data.
 --- 10.10.1.5 ping statistics ---
 5 packets transmitted, 5 received, 0% packet loss, time 20ms
 rtt min/avg/max/mdev = 2.551/2.919/3.583/0.406 ms, ipg/ewma 5.128/3.251 ms
+```
 
-
-
+- #### spine-2
+```
 spine-2#ping 10.10.2.1
 PING 10.10.2.1 (10.10.2.1) 72(100) bytes of data.
 80 bytes from 10.10.2.1: icmp_seq=1 ttl=64 time=30.9 ms
@@ -102,3 +216,4 @@ PING 10.10.2.5 (10.10.2.5) 72(100) bytes of data.
 --- 10.10.2.5 ping statistics ---
 5 packets transmitted, 5 received, 0% packet loss, time 71ms
 rtt min/avg/max/mdev = 2.970/12.739/27.944/9.637 ms, pipe 3, ipg/ewma 17.977/19.703 ms
+```
