@@ -2,9 +2,7 @@
 Проектирование адресного пространства
 Схема CLOS
 
-
-
-
+![alt text](Схема.JPG)
 
 
 Адресация сети
@@ -35,3 +33,72 @@
 
 
 Проверка на доступнорсть
+
+spine1#ping 10.10.1.1
+PING 10.10.1.1 (10.10.1.1) 72(100) bytes of data.
+80 bytes from 10.10.1.1: icmp_seq=1 ttl=64 time=4.03 ms
+80 bytes from 10.10.1.1: icmp_seq=2 ttl=64 time=2.91 ms
+80 bytes from 10.10.1.1: icmp_seq=3 ttl=64 time=2.76 ms
+80 bytes from 10.10.1.1: icmp_seq=4 ttl=64 time=2.69 ms
+80 bytes from 10.10.1.1: icmp_seq=5 ttl=64 time=2.62 ms
+--- 10.10.1.1 ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 20ms
+rtt min/avg/max/mdev = 2.625/3.004/4.030/0.524 ms, ipg/ewma 5.205/3.493 ms
+
+spine1#ping 10.10.1.3
+PING 10.10.1.3 (10.10.1.3) 72(100) bytes of data.
+80 bytes from 10.10.1.3: icmp_seq=1 ttl=64 time=4.44 ms
+80 bytes from 10.10.1.3: icmp_seq=2 ttl=64 time=2.56 ms
+80 bytes from 10.10.1.3: icmp_seq=3 ttl=64 time=2.90 ms
+80 bytes from 10.10.1.3: icmp_seq=4 ttl=64 time=2.47 ms
+80 bytes from 10.10.1.3: icmp_seq=5 ttl=64 time=2.50 ms
+--- 10.10.1.3 ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 20ms
+rtt min/avg/max/mdev = 2.473/2.977/4.441/0.749 ms, ipg/ewma 5.037/3.679 ms
+
+spine1#ping 10.10.1.5
+PING 10.10.1.5 (10.10.1.5) 72(100) bytes of data.
+80 bytes from 10.10.1.5: icmp_seq=1 ttl=64 time=3.58 ms
+80 bytes from 10.10.1.5: icmp_seq=2 ttl=64 time=2.67 ms
+80 bytes from 10.10.1.5: icmp_seq=3 ttl=64 time=2.59 ms
+80 bytes from 10.10.1.5: icmp_seq=4 ttl=64 time=2.55 ms
+80 bytes from 10.10.1.5: icmp_seq=5 ttl=64 time=3.19 ms
+--- 10.10.1.5 ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 20ms
+rtt min/avg/max/mdev = 2.551/2.919/3.583/0.406 ms, ipg/ewma 5.128/3.251 ms
+
+
+
+spine-2#ping 10.10.2.1
+PING 10.10.2.1 (10.10.2.1) 72(100) bytes of data.
+80 bytes from 10.10.2.1: icmp_seq=1 ttl=64 time=30.9 ms
+80 bytes from 10.10.2.1: icmp_seq=2 ttl=64 time=19.6 ms
+80 bytes from 10.10.2.1: icmp_seq=3 ttl=64 time=16.2 ms
+80 bytes from 10.10.2.1: icmp_seq=4 ttl=64 time=6.01 ms
+80 bytes from 10.10.2.1: icmp_seq=5 ttl=64 time=2.77 ms
+
+--- 10.10.2.1 ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 79ms
+rtt min/avg/max/mdev = 2.779/15.120/30.913/10.063 ms, pipe 3, ipg/ewma 19.863/22.326 ms
+spine-2#ping 10.10.2.3
+PING 10.10.2.3 (10.10.2.3) 72(100) bytes of data.
+80 bytes from 10.10.2.3: icmp_seq=1 ttl=64 time=28.7 ms
+80 bytes from 10.10.2.3: icmp_seq=2 ttl=64 time=15.3 ms
+80 bytes from 10.10.2.3: icmp_seq=3 ttl=64 time=7.51 ms
+80 bytes from 10.10.2.3: icmp_seq=4 ttl=64 time=2.59 ms
+80 bytes from 10.10.2.3: icmp_seq=5 ttl=64 time=2.82 ms
+
+--- 10.10.2.3 ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 77ms
+rtt min/avg/max/mdev = 2.592/11.400/28.711/9.815 ms, pipe 3, ipg/ewma 19.251/19.471 ms
+spine-2#ping 10.10.2.5
+PING 10.10.2.5 (10.10.2.5) 72(100) bytes of data.
+80 bytes from 10.10.2.5: icmp_seq=1 ttl=64 time=27.9 ms
+80 bytes from 10.10.2.5: icmp_seq=2 ttl=64 time=19.1 ms
+80 bytes from 10.10.2.5: icmp_seq=3 ttl=64 time=10.4 ms
+80 bytes from 10.10.2.5: icmp_seq=4 ttl=64 time=3.18 ms
+80 bytes from 10.10.2.5: icmp_seq=5 ttl=64 time=2.97 ms
+
+--- 10.10.2.5 ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 71ms
+rtt min/avg/max/mdev = 2.970/12.739/27.944/9.637 ms, pipe 3, ipg/ewma 17.977/19.703 ms
