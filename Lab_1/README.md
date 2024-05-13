@@ -16,7 +16,7 @@
 |spine-2 |	Ethernet1 |	10.10.2.0/31 |	leaf-1     |
 |spine-2 |	Ethernet2 |	10.10.2.2/31 |	leaf-2     |
 |spine-2 |	Ethernet3 |	10.10.2.4/31 |	leaf-3     |
-|spine-2 |	Loopback1 |		         |             |
+|spine-2 |	Loopback1 |	10.10.20.0/32|             |
 |                                                  |
 |leaf-1  |	Ethernet1 |	10.10.1.1/31 |	spine-1    |
 |leaf-1  |	Ethernet2 |	10.10.2.1/31 |	spine-2    |
