@@ -364,6 +364,7 @@ PING 10.10.20.0 (10.10.20.0) 72(100) bytes of data.
 --- 10.10.20.0 ping statistics ---
 5 packets transmitted, 5 received, 0% packet loss, time 50ms
 rtt min/avg/max/mdev = 4.605/7.388/14.957/3.862 ms, pipe 2, ipg/ewma 12.507/10.9  94 ms
+
 spine1#ping 10.10.0.1
 PING 10.10.0.1 (10.10.0.1) 72(100) bytes of data.
 80 bytes from 10.10.0.1: icmp_seq=1 ttl=64 time=3.87 ms
@@ -375,6 +376,7 @@ PING 10.10.0.1 (10.10.0.1) 72(100) bytes of data.
 --- 10.10.0.1 ping statistics ---
 5 packets transmitted, 5 received, 0% packet loss, time 18ms
 rtt min/avg/max/mdev = 2.270/2.695/3.877/0.604 ms, ipg/ewma 4.736/3.259 ms
+
 spine1#ping 10.10.0.2
 PING 10.10.0.2 (10.10.0.2) 72(100) bytes of data.
 80 bytes from 10.10.0.2: icmp_seq=1 ttl=64 time=4.16 ms
@@ -386,6 +388,7 @@ PING 10.10.0.2 (10.10.0.2) 72(100) bytes of data.
 --- 10.10.0.2 ping statistics ---
 5 packets transmitted, 5 received, 0% packet loss, time 20ms
 rtt min/avg/max/mdev = 2.076/2.876/4.167/0.700 ms, ipg/ewma 5.047/3.501 ms
+
 spine1#ping 10.10.0.3
 PING 10.10.0.3 (10.10.0.3) 72(100) bytes of data.
 80 bytes from 10.10.0.3: icmp_seq=1 ttl=64 time=6.68 ms
@@ -412,6 +415,7 @@ PING 10.10.10.0 (10.10.10.0) 72(100) bytes of data.
 --- 10.10.10.0 ping statistics ---
 5 packets transmitted, 5 received, 0% packet loss, time 52ms
 rtt min/avg/max/mdev = 4.681/6.921/14.269/3.695 ms, ipg/ewma 13.139/10s
+
 spine-2#ping 10.10.0.1
 PING 10.10.0.1 (10.10.0.1) 72(100) bytes of data.
 80 bytes from 10.10.0.1: icmp_seq=1 ttl=64 time=4.26 ms
@@ -423,6 +427,7 @@ PING 10.10.0.1 (10.10.0.1) 72(100) bytes of data.
 --- 10.10.0.1 ping statistics ---
 5 packets transmitted, 5 received, 0% packet loss, time 19ms
 rtt min/avg/max/mdev = 2.052/2.696/4.265/0.816 ms, ipg/ewma 4.783/3.43s
+
 spine-2#ping 10.10.0.2
 PING 10.10.0.2 (10.10.0.2) 72(100) bytes of data.
 80 bytes from 10.10.0.2: icmp_seq=1 ttl=64 time=6.52 ms
@@ -434,6 +439,7 @@ PING 10.10.0.2 (10.10.0.2) 72(100) bytes of data.
 --- 10.10.0.2 ping statistics ---
 5 packets transmitted, 5 received, 0% packet loss, time 25ms
 rtt min/avg/max/mdev = 2.131/3.479/6.527/1.666 ms, ipg/ewma 6.412/4.98s
+
 spine-2#ping 10.10.0.3
 PING 10.10.0.3 (10.10.0.3) 72(100) bytes of data.
 80 bytes from 10.10.0.3: icmp_seq=1 ttl=64 time=8.09 ms
