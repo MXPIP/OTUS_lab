@@ -55,6 +55,7 @@ peer-filter leaf
 router bgp 65000
    router-id 10.10.10.0
    timers bgp 3 9
+   maximum-paths 2
    bgp listen range 10.10.1.0/29 peer-group leaf peer-filter leaf
    neighbor leaf peer group
    neighbor leaf next-hop-self
@@ -117,6 +118,7 @@ route-map loop permit 10
 router bgp 65000
    router-id 10.10.20.0
    timers bgp 3 9
+   maximum-paths 2
    neighbor 10.10.2.1 remote-as 65001
    neighbor 10.10.2.1 bfd
    neighbor 10.10.2.1 route-map leaf-in in
@@ -174,6 +176,7 @@ route-map loop permit 10
 router bgp 65001
    router-id 10.10.0.1
    timers bgp 3 9
+   maximum-paths 2
    neighbor 10.10.1.0 remote-as 65000
    neighbor 10.10.1.0 bfd
    neighbor 10.10.1.0 password 7 7tvg/aRwIygTniCYSXUPEg==
@@ -222,6 +225,7 @@ route-map loop permit 10
 !
 router bgp 65002
    router-id 10.10.0.2
+   maximum-paths 2
    neighbor 10.10.1.2 remote-as 65000
    neighbor 10.10.1.2 bfd
    neighbor 10.10.1.2 password 7 ANUhHTpBAeD3CbMkFHzCMQ==
@@ -270,6 +274,7 @@ route-map loop permit 10
 !
 router bgp 65003
    router-id 10.10.0.3
+   maximum-paths 2
    neighbor 10.10.1.4 remote-as 65000
    neighbor 10.10.1.4 bfd
    neighbor 10.10.1.4 password 7 kofiCbtE3TdA+mdiQdM2ag==
@@ -383,7 +388,9 @@ Neighbor Status Codes: m - Under maintenance
 
 leaf-1#sho ip ro bg
  B E      10.10.0.2/32 [200/0] via 10.10.1.0, Ethernet1
+                               via 10.10.2.0, Ethernet2
  B E      10.10.0.3/32 [200/0] via 10.10.1.0, Ethernet1
+                               via 10.10.2.0, Ethernet2
  B E      10.10.1.2/31 [200/0] via 10.10.2.0, Ethernet2
  B E      10.10.1.4/31 [200/0] via 10.10.2.0, Ethernet2
  B E      10.10.1.0/29 [200/0] via 10.10.1.0, Ethernet1
@@ -395,10 +402,11 @@ leaf-1#sho ip ro bg
 
 
 leaf-1#sho ip ro
-Gateway of last resort is not set
  C        10.10.0.1/32 is directly connected, Loopback2
  B E      10.10.0.2/32 [200/0] via 10.10.1.0, Ethernet1
+                               via 10.10.2.0, Ethernet2
  B E      10.10.0.3/32 [200/0] via 10.10.1.0, Ethernet1
+                               via 10.10.2.0, Ethernet2
  C        10.10.1.0/31 is directly connected, Ethernet1
  B E      10.10.1.2/31 [200/0] via 10.10.2.0, Ethernet2
  B E      10.10.1.4/31 [200/0] via 10.10.2.0, Ethernet2
@@ -428,7 +436,9 @@ Neighbor Status Codes: m - Under maintenance
 
 leaf-2#sho ip ro bg
  B E      10.10.0.1/32 [200/0] via 10.10.1.2, Ethernet1
+                               via 10.10.2.2, Ethernet2
  B E      10.10.0.3/32 [200/0] via 10.10.1.2, Ethernet1
+                               via 10.10.2.2, Ethernet2
  B E      10.10.1.0/31 [200/0] via 10.10.2.2, Ethernet2
  B E      10.10.1.4/31 [200/0] via 10.10.2.2, Ethernet2
  B E      10.10.1.0/29 [200/0] via 10.10.1.2, Ethernet1
@@ -441,8 +451,10 @@ leaf-2#sho ip ro bg
 
 leaf-2#sho ip ro
  B E      10.10.0.1/32 [200/0] via 10.10.1.2, Ethernet1
+                               via 10.10.2.2, Ethernet2
  C        10.10.0.2/32 is directly connected, Loopback2
  B E      10.10.0.3/32 [200/0] via 10.10.1.2, Ethernet1
+                               via 10.10.2.2, Ethernet2
  B E      10.10.1.0/31 [200/0] via 10.10.2.2, Ethernet2
  C        10.10.1.2/31 is directly connected, Ethernet1
  B E      10.10.1.4/31 [200/0] via 10.10.2.2, Ethernet2
@@ -472,7 +484,9 @@ Neighbor Status Codes: m - Under maintenance
 
 leaf-3#sho ip ro bg
  B E      10.10.0.1/32 [200/0] via 10.10.1.4, Ethernet1
+                               via 10.10.2.4, Ethernet2
  B E      10.10.0.2/32 [200/0] via 10.10.1.4, Ethernet1
+                               via 10.10.2.4, Ethernet2
  B E      10.10.1.0/31 [200/0] via 10.10.2.4, Ethernet2
  B E      10.10.1.2/31 [200/0] via 10.10.2.4, Ethernet2
  B E      10.10.1.0/29 [200/0] via 10.10.1.4, Ethernet1
@@ -483,9 +497,11 @@ leaf-3#sho ip ro bg
  B E      10.10.20.0/32 [200/0] via 10.10.2.4, Ethernet2
 
 
-leaf-3#sho ip ro
+leaf-3#sho ip route
  B E      10.10.0.1/32 [200/0] via 10.10.1.4, Ethernet1
+                               via 10.10.2.4, Ethernet2
  B E      10.10.0.2/32 [200/0] via 10.10.1.4, Ethernet1
+                               via 10.10.2.4, Ethernet2
  C        10.10.0.3/32 is directly connected, Loopback2
  B E      10.10.1.0/31 [200/0] via 10.10.2.4, Ethernet2
  B E      10.10.1.2/31 [200/0] via 10.10.2.4, Ethernet2
