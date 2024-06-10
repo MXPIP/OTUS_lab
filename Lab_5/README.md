@@ -469,14 +469,15 @@ end
 
 - ### spine-1
 ```
-spine1#sho ip bg summary
+spine1#sho bgp evpn summary
 BGP summary information for VRF default
 Router identifier 10.10.10.0, local AS number 65000
 Neighbor Status Codes: m - Under maintenance
   Neighbor  V AS           MsgRcvd   MsgSent  InQ OutQ  Up/Down State   PfxRcd PfxAcc
-  10.10.1.1 4 65001             24        22    0    0 00:00:43 Estab   4      4
-  10.10.1.3 4 65002             23        23    0    0 00:00:43 Estab   4      4
-  10.10.1.5 4 65003             24        22    0    0 00:00:43 Estab   4      4
+  10.10.0.1 4 65001           1913      1901    0    0 01:20:14 Estab   2      2
+  10.10.0.2 4 65002           1912      1915    0    0 01:20:17 Estab   2      2
+  10.10.0.3 4 65003           1915      1907    0    0 01:20:15 Estab   2      2
+
 ```
 </details>
 
@@ -490,9 +491,9 @@ BGP summary information for VRF default
 Router identifier 10.10.20.0, local AS number 65000
 Neighbor Status Codes: m - Under maintenance
   Neighbor  V AS           MsgRcvd   MsgSent  InQ OutQ  Up/Down State   PfxRcd PfxAcc
-  10.10.0.1 4 65001            115       114    0    0 00:04:27 Estab   2      2
-  10.10.0.2 4 65002             94        96    0    0 00:03:38 Estab   0      0
-  10.10.0.3 4 65003             87        90    0    0 00:03:20 Estab   0      0
+  10.10.0.1 4 65001           1977      1974    0    0 01:22:42 Estab   2      2
+  10.10.0.2 4 65002           1952      1953    0    0 01:21:53 Estab   2      2
+  10.10.0.3 4 65003           1947      1938    0    0 01:21:35 Estab   2      2
   ```
   </details>
 
